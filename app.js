@@ -493,8 +493,8 @@ class SmartBillingApp {
               </thead>
               <tbody>
                 ${split.participants
-                  .map(
-                    (participant, index) => `
+            .map(
+              (participant, index) => `
                   <tr>
                     <td>${participant.name}</td>
                     <td>KES ${participant.share.toLocaleString()}</td>
@@ -504,16 +504,15 @@ class SmartBillingApp {
                       </span>
                     </td>
                     <td>
-                      ${
-                        !participant.paid
-                          ? `<button class="btn btn-sm btn-success" onclick="app.markAsPaid(${split.id}, ${index})">Mark as Paid</button>`
-                          : '<span class="text-success">✓ Completed</span>'
-                      }
+                      ${!participant.paid
+                  ? `<button class="btn btn-sm btn-success" onclick="app.markAsPaid(${split.id}, ${index})">Mark as Paid</button>`
+                  : '<span class="text-success">✓ Completed</span>'
+                }
                     </td>
                   </tr>
                 `,
-                  )
-                  .join("")}
+            )
+            .join("")}
               </tbody>
             </table>
           </div>
@@ -564,8 +563,8 @@ class SmartBillingApp {
           </thead>
           <tbody>
             ${this.data.transactions
-              .map(
-                (transaction) => `
+        .map(
+          (transaction) => `
               <tr onclick="app.toggleTransactionDetails(${transaction.id})" style="cursor: pointer;">
                 <td>${new Date(transaction.date).toLocaleDateString()}</td>
                 <td>${transaction.utility}</td>
@@ -588,8 +587,8 @@ class SmartBillingApp {
                 </td>
               </tr>
             `,
-              )
-              .join("")}
+        )
+        .join("")}
           </tbody>
         </table>
       </div>
@@ -655,8 +654,8 @@ class SmartBillingApp {
       <h3 class="mb-4">Manage Utilities</h3>
       <div class="grid grid-2">
         ${this.data.utilities
-          .map(
-            (utility) => `
+        .map(
+          (utility) => `
           <div class="card">
             <h4 class="card-title">${utility.name}</h4>
             <p class="card-subtitle">${utility.provider}</p>
@@ -668,8 +667,8 @@ class SmartBillingApp {
             </div>
           </div>
         `,
-          )
-          .join("")}
+        )
+        .join("")}
       </div>
       <button class="btn btn-primary mt-4" onclick="app.addUtility()">Add New Utility</button>
     `
@@ -934,7 +933,4 @@ class SmartBillingApp {
   }
 }
 
-// Initialize the app when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  window.app = new SmartBillingApp()
-})
+
